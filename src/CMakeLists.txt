@@ -10,6 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 # add_subdirectory(lib)
 # add_subdirectory(planning)
 set(SOURCE main.cpp)
+set(EXECUTABLE_OUTPUT_PATH "../bin")
 
 add_executable(${PROJECT_NAME} ${SOURCE})
 # target_link_libraries(main planning)
