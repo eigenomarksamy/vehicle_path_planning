@@ -7,10 +7,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 # enable repository specific options
 # include("${CMAKE_CURRENT_SOURCE_DIR}/../cmake/ProjectSpecificOptions.cmake")
 
-# add_subdirectory(lib)
+add_subdirectory(utils)
 # add_subdirectory(planning)
+
+# add includes for this project
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/map
+    ${CMAKE_CURRENT_SOURCE_DIR}/planner)
+
 set(SOURCE main.cpp)
 set(EXECUTABLE_OUTPUT_PATH "../bin")
 
+
 add_executable(${PROJECT_NAME} ${SOURCE})
-# target_link_libraries(main planning)
+target_link_libraries(${PROJECT_NAME} utils)
