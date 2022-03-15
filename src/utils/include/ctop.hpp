@@ -11,9 +11,17 @@ struct Point_S
      */
     double y_m_;
 
+    /**
+     * @brief default constructor
+     */
     Point_S () {}
 
-    Point_S (const double x, const double y)
+    /**
+     * @brief explicit constructor uses the point
+     * @param x - x
+     * @param y - y
+     */
+    explicit Point_S (const double x, const double y)
         : x_m_(x), y_m_(y) {};
 };
 
@@ -35,6 +43,8 @@ struct Frame_S
 
     /**
      * @brief explicit constructor uses the point
+     * @param xy_point - struct of type of point
+     * @param ang_rad - angle in radians
      */
     explicit Frame_S (const Point_S xy_point, const double ang_rad)
         : xy_point_(xy_point), ang_rad_(ang_rad) {};
@@ -76,10 +86,26 @@ struct Frame_S
 
 struct Dimensions_3D_S
 {
+    /**
+     * @brief length
+     */
     double length;
+    /**
+     * @brief width
+     */
     double width;
+    /**
+     * @brief height
+     */
     double height;
 
+    /**
+     * @brief construct a new Dimensions_3D_S object
+     * 
+     * @param length - length given to object
+     * @param width - width given to object
+     * @param height - height given to object
+     */
     Dimensions_3D_S (const double length, const double width, const double height)
         : length(length), width(width), height(height) {};
 };
