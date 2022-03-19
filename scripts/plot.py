@@ -70,21 +70,21 @@ def plot(legend, data):
                                   'Blue',
                                   'Grey'])
     plt.pcolor(data[::-1], cmap=cmap, edgecolors='k', linewidths=1)
-    # white_patch = mpatches.Patch(color='white', label='freespace')
-    # red_patch = mpatches.Patch(color='red', label='obstacle')
-    # yellow_patch = mpatches.Patch(color='yellow', label='start')
-    # green_patch = mpatches.Patch(color='green', label='goal')
-    # blue_patch = mpatches.Patch(color='blue', label='path')
-    # grey_patch = mpatches.Patch(color='grey', label='obstacle_path')
-    # magenta_patch = mpatches.Patch(color='magenta', label='collision')
-    # cyan_patch = mpatches.Patch(color='cyan', label='unknown')
-    # purple_patch = mpatches.Patch(color='purple', label='unknown')
-    # black_patch = mpatches.Patch(color='black', label='unknown')
+    white_patch = mpatches.Patch(color='white', label='freespace')
+    red_patch = mpatches.Patch(color='red', label='obstacle')
+    yellow_patch = mpatches.Patch(color='yellow', label='start')
+    green_patch = mpatches.Patch(color='green', label='goal')
+    blue_patch = mpatches.Patch(color='blue', label='path')
+    grey_patch = mpatches.Patch(color='grey', label='obstacle_path')
+    magenta_patch = mpatches.Patch(color='magenta', label='collision')
+    cyan_patch = mpatches.Patch(color='cyan', label='unknown')
+    purple_patch = mpatches.Patch(color='purple', label='unknown')
+    black_patch = mpatches.Patch(color='black', label='unknown')
     # plt.legend(handles=[white_patch, red_patch, yellow_patch, green_patch, blue_patch, grey_patch, magenta_patch])
     plt.show()
 
 def main():
-    legend, body = parse('../gen/New Text Document.txt')
+    legend, body = parse('../gen/grid_map_output.txt')
     plot(legend, body)
 
 if __name__ == "__main__":
