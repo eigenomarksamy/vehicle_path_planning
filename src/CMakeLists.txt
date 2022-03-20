@@ -12,12 +12,16 @@ add_subdirectory(utils)
 
 # add includes for this project
 include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/conf
     ${CMAKE_CURRENT_SOURCE_DIR}/map
     ${CMAKE_CURRENT_SOURCE_DIR}/planner)
 
-set(SOURCE main.cpp)
+set(SOURCES_CPP
+    ${CMAKE_CURRENT_SOURCE_DIR}/map/grid_map.cpp
+    main.cpp)
+
 set(EXECUTABLE_OUTPUT_PATH "../bin")
 
 
-add_executable(${PROJECT_NAME} ${SOURCE})
+add_executable(${PROJECT_NAME} ${SOURCES_CPP})
 target_link_libraries(${PROJECT_NAME} utils)

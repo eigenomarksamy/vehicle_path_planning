@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @brief a point in space structure
+ */
 struct Point_S
 {
     /**
@@ -25,6 +28,9 @@ struct Point_S
         : x_m_(x), y_m_(y) {};
 };
 
+/**
+ * @brief structure for the xyangle-frame
+ */
 struct Frame_S
 {
     /**
@@ -84,6 +90,9 @@ struct Frame_S
     bool operator==(const Frame_S& p) const;
 };
 
+/**
+ * @brief struct for dimensions of a 3D object
+ */
 struct Dimensions_3D_S
 {
     /**
