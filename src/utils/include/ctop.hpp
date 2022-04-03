@@ -127,6 +127,9 @@ struct Dimensions_2D_S
 struct Quadrangle_S
 {
 
+    /**
+     * @brief enum type to identify the point of a quadrangle
+     */
     enum Quad_Point_Type_E
     {
         Mid, Mid_Right, Top_Right,
@@ -134,21 +137,48 @@ struct Quadrangle_S
         Bot_Left, Mid_Bot, Bot_Right,
         Quad_Points_Num
     };
+
+    /**
+     * @brief construct a new Quadrangle_S object
+     * 
+     * @param initType - the type of the point that should be considered in initialization
+     * @param initFrame - the frame of initialization (x, y, angle)
+     * @param dim - dimensions of quad
+     */
     Quadrangle_S(Quad_Point_Type_E initType, Frame_S initFrame, Dimensions_2D_S dim)
         : init_type(initType), init_frame(initFrame), dimensions(dim) {}
 
+    /**
+     * @brief function to construct the quadrangle
+     */
     void construct();
 
+    /**
+     * @brief get array of points
+     * @param points - reference to array of points to be filled
+     */
     void getPoints(Point_S (&points)[Quad_Points_Num]) const;
 
 private:
 
+    /**
+     * @brief attribute identifies the type of the initial point
+     */
     Quad_Point_Type_E init_type;
 
+    /**
+     * @brief attribute identifies the initialization frame
+     */
     Frame_S init_frame;
 
+    /**
+     * @brief attribute identifies the scalar dimensions
+     */
     Dimensions_2D_S dimensions;
 
+    /**
+     * @brief attribute stores the array of points in a quad
+     */
     Point_S points_quad[Quad_Points_Num];
 
 };
