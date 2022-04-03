@@ -1,3 +1,5 @@
+/* MAP construction */
+
 #pragma once
 
 #include <stdint.h>
@@ -26,7 +28,7 @@ struct Obstacle_S
     /**
      * @brief obstacle dimensions
      */
-    Dimensions_3D_S obs_dim;
+    Dimensions_2D_S obs_dim;
     /**
      * @brief is obstacle dynamic
      */
@@ -47,7 +49,8 @@ public:
     /**
      * @brief enum class for map errors
      */
-    enum class Map_Error_Code_EC {
+    enum class Map_Error_Code_EC
+    {
         Err_None,
         Err_KeyNotFound,
         Err_InvalidCfg,
@@ -57,7 +60,8 @@ public:
     /**
      * @brief map origin type enum class
      */
-    enum class Map_Origin_Type_EC {
+    enum class Map_Origin_Type_EC
+    {
         Rel_Veh,
         Rel_Origin
     };

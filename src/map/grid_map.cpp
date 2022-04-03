@@ -7,7 +7,10 @@ void Grid_Map_C::createGridMap()
 {
     size_t obstLen = v_obstacles_.size();
 
-    
+    for (size_t i = 0; i < obstLen; i++)
+    {
+        
+    }
 }
 
 bool Grid_Map_C::getCollisionAtPoint(Point_S point)

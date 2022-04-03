@@ -1,3 +1,5 @@
+/* VEHicle CONFiguration */
+
 #pragma once
 
 struct Veh_Geo_Cfg_S

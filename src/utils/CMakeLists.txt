@@ -7,6 +7,7 @@ target_include_directories(utils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 set(SOURCES_CPP
     ${CMAKE_CURRENT_SOURCE_DIR}/node.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ctop.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/output_sim.cpp
 )
 

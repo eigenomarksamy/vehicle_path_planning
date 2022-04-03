@@ -1,4 +1,11 @@
+/* Common TOPology */
+
 #pragma once
+
+#include <vector>
+#include <string>
+#include <map>
+#include <memory>
 
 /**
  * @brief a point in space structure
@@ -93,7 +100,7 @@ struct Frame_S
 /**
  * @brief struct for dimensions of a 3D object
  */
-struct Dimensions_3D_S
+struct Dimensions_2D_S
 {
     /**
      * @brief length
@@ -103,18 +110,45 @@ struct Dimensions_3D_S
      * @brief width
      */
     double width;
-    /**
-     * @brief height
-     */
-    double height;
 
     /**
-     * @brief construct a new Dimensions_3D_S object
+     * @brief construct a new Dimensions_2D_S object
      * 
      * @param length - length given to object
      * @param width - width given to object
-     * @param height - height given to object
      */
-    Dimensions_3D_S (const double length, const double width, const double height)
-        : length(length), width(width), height(height) {};
+    Dimensions_2D_S (const double length, const double width)
+        : length(length), width(width) {};
+};
+
+/**
+ * @brief structure for the quadrangle computations and properties
+ */
+struct Quadrangle_S
+{
+
+    enum Quad_Point_Type_E
+    {
+        Mid, Mid_Right, Top_Right,
+        Mid_Top, Top_Left, Mid_Left,
+        Bot_Left, Mid_Bot, Bot_Right,
+        Quad_Points_Num
+    };
+    Quadrangle_S(Quad_Point_Type_E initType, Frame_S initFrame, Dimensions_2D_S dim)
+        : init_type(initType), init_frame(initFrame), dimensions(dim) {}
+
+    void construct();
+
+    void getPoints(Point_S (&points)[Quad_Points_Num]) const;
+
+private:
+
+    Quad_Point_Type_E init_type;
+
+    Frame_S init_frame;
+
+    Dimensions_2D_S dimensions;
+
+    Point_S points_quad[Quad_Points_Num];
+
 };
