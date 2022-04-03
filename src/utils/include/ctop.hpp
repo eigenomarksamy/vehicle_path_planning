@@ -6,6 +6,21 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <math.h>
+
+#define _USE_MATH_DEFINES
+
+#define ANG_90_RAD 90.0
+#define ANG_180_DEG 180.0
+#define ANG_270_DEG 270.0
+#define ANG_360_DEG 360.0
+#define ANG_90_DEG M_PI / 2
+#define ANG_180_RAD M_PI
+#define ANG_360_RAD M_PI * 2
+#define ANG_270_RAD 3 * M_PI / 2
+
+#define CONV_RAD_TO_DEG(R) R * ANGLE_180_DEG / M_PI
+#define CONV_DEG_TO_RAD(D) D * M_PI / ANGLE_180_DEG
 
 /**
  * @brief a point in space structure
@@ -33,6 +48,27 @@ struct Point_S
      */
     explicit Point_S (const double x, const double y)
         : x_m_(x), y_m_(y) {};
+
+    /**
+     * @brief overloading operator + for struct
+     * @param p - point
+     * @return point with current point's and input point p's values added
+     */
+    Point_S operator+(const Point_S& p) const;
+
+    /**
+     * @brief overloading operator - for struct
+     * @param p - point
+     * @return point with current point's and input point p's values subtracted
+     */
+    Point_S operator-(const Point_S& p) const;
+
+    /**
+     * @brief overloading operator == for struct
+     * @param p - point
+     * @return bool whether current point equals input point
+     */
+    bool operator==(const Point_S& p) const;
 };
 
 /**
@@ -146,7 +182,18 @@ struct Quadrangle_S
      * @param dim - dimensions of quad
      */
     Quadrangle_S(Quad_Point_Type_E initType, Frame_S initFrame, Dimensions_2D_S dim)
-        : init_type(initType), init_frame(initFrame), dimensions(dim) {}
+        : init_type_(initType), init_frame_(initFrame), dimensions_(dim) {}
+
+    /**
+     * @brief function that transforms the frame to the initiale position
+     * @param frame - frame to be transformed
+     * @param current - current type
+     * @param required - required type
+     * @return Frame_S - transformed frame
+     */
+    static Frame_S transformTypeFrameToFrame(const Frame_S& frame,
+                                             const Quad_Point_Type_E current,
+                                             const Quad_Point_Type_E required);
 
     /**
      * @brief function to construct the quadrangle
@@ -155,30 +202,35 @@ struct Quadrangle_S
 
     /**
      * @brief get array of points
-     * @param points - reference to array of points to be filled
+     * @param a_points - reference to array of points to be filled from attribute
      */
-    void getPoints(Point_S (&points)[Quad_Points_Num]) const;
+    inline void getPoints(Point_S (&a_points)[Quad_Points_Num]) const {
+        for (uint8_t i = 0; i < Quad_Points_Num; i++)
+        {
+            a_points[i] = points_quad_[i];
+        }
+    }
 
 private:
 
     /**
      * @brief attribute identifies the type of the initial point
      */
-    Quad_Point_Type_E init_type;
+    Quad_Point_Type_E init_type_;
 
     /**
      * @brief attribute identifies the initialization frame
      */
-    Frame_S init_frame;
+    Frame_S init_frame_;
 
     /**
      * @brief attribute identifies the scalar dimensions
      */
-    Dimensions_2D_S dimensions;
+    Dimensions_2D_S dimensions_;
 
     /**
      * @brief attribute stores the array of points in a quad
      */
-    Point_S points_quad[Quad_Points_Num];
+    Point_S points_quad_[Quad_Points_Num];
 
 };
